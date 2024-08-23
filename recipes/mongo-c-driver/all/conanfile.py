@@ -27,7 +27,7 @@ class MongoCDriverConan(ConanFile):
 
 	def requirements(self):
 		if self.settings.os == "Linux":
-			self.requires("openssl/3.2.1")
+			self.requires("openssl/[^3.3]")
 
 	def layout(self):
 		cmake_layout(self, src_folder="src")
