@@ -47,6 +47,9 @@ class MongoCxxConan(ConanFile):
 		if is_msvc(self):
 			tc.cache_variables["CMAKE_CXX_FLAGS"] = "/Zc:__cplusplus /EHsc"
 
+		if Version(self.version) >= "3.10.0" and is_msvc(self):
+			tc.variables["ENABLE_ABI_TAG_IN_LIBRARY_FILENAMES"] = False
+
 		if "Macos" == self.settings.os:
 			tc.blocks["rpath"].skip_rpath = False
 
